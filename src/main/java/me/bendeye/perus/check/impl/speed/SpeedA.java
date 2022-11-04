@@ -2,17 +2,19 @@ package me.bendeye.perus.check.impl.speed;
 
 import me.bendeye.perus.check.Check;
 import me.bendeye.perus.data.PlayerData;
-import org.bukkit.entity.Player;
+import me.bendeye.perus.packet.Packet;
 
 public class SpeedA extends Check {
 
     public SpeedA(PlayerData data) {
-        super(data, "SpeedA");
+        super(data, "Speed (A)");
     }
 
     @Override
-    public void handle(Player player) {
+    public void handle(Packet packet) {
+        if (packet.isArmAnimation()) {
             flag();
+        }
     }
 
 }

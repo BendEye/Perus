@@ -1,4 +1,4 @@
 perus:
   messages:
-    notifications: "Perus | %player% has violated %check% (x%vl%) %stats%"
+    notifications: "&9Perus &8| &f%player% &7has violated &f%check% &8(&9x%vl%&8) &7%stats%"
     help: "Commands: alerts"

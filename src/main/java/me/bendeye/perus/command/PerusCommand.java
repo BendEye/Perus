@@ -21,7 +21,6 @@ public class PerusCommand implements CommandExecutor {
                     if (args[0].equalsIgnoreCase("alerts")) {
                         if (sender.hasPermission("perus.alerts") || sender.isOp()) {
                             alertManager.toggleAlerts((Player) sender);
-                            sender.sendMessage("Notifications have been toggled on");
                         }
                     }
                 }

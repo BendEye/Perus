@@ -1,9 +1,11 @@
 package me.bendeye.perus;
 
+import com.comphenix.protocol.ProtocolLibrary;
 import lombok.Getter;
 
 import me.bendeye.perus.command.PerusCommand;
 import me.bendeye.perus.listener.EventListener;
+import me.bendeye.perus.listener.PacketListener;
 import me.bendeye.perus.manager.AlertManager;
 import me.bendeye.perus.manager.CheckManager;
 import me.bendeye.perus.manager.ConfigManager;
@@ -20,7 +22,6 @@ public class Perus extends JavaPlugin {
 
     @Getter
     private final CheckManager checkManager = new CheckManager();
-
     @Getter
     private ConfigManager configManager;
     @Getter
@@ -32,6 +33,7 @@ public class Perus extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         instance = this;
+        ProtocolLibrary.getProtocolManager().addPacketListener(new PacketListener());
         saveDefaultConfig();
         configManager = new ConfigManager(getConfig());
         getCommand("perus").setExecutor(new PerusCommand());

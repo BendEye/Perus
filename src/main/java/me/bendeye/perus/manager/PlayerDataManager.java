@@ -1,5 +1,6 @@
 package me.bendeye.perus.manager;
 
+import me.bendeye.perus.Perus;
 import me.bendeye.perus.data.PlayerData;
 import org.bukkit.entity.Player;
 
