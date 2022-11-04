@@ -12,4 +12,5 @@ public class FlyA extends Check {
     public FlyA(PlayerData data) {
         super(data);
     }
+
 }
