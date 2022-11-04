@@ -22,20 +22,14 @@ public abstract class Check {
     protected final PlayerData data;
 
     protected int violations;
-    private final Set<Long> flagTimes = new HashSet<>();
 
     public Check(PlayerData data) {
         this.data = data;
     }
 
-    public void alert(PlayerData data) {
-        flagTimes.add(System.currentTimeMillis());
+   public void flag() {
 
-        alertManager.handleAlert(this, String.format("§DPerus §7| §b%player% §5failed §3%checkName% §6%Violation%", data.getPlayer().getName()));
     }
 
-    protected void decreaseVl(int decrement) {
-        violations = Math.max(0, violations - decrement);
-    }
 
 }
