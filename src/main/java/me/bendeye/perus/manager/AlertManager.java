@@ -1,7 +1,8 @@
 package me.bendeye.perus.manager;
 
+import lombok.Getter;
+import me.bendeye.perus.Perus;
 import me.bendeye.perus.check.Check;
-import me.bendeye.perus.data.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -11,7 +12,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
+@Getter
 public class AlertManager {
 
     private final Set<UUID> notifications = new HashSet<>();
@@ -19,15 +20,15 @@ public class AlertManager {
 
     private final ExecutorService executorService = Executors.newFixedThreadPool(4);
 
-
     public void toggleAlerts(Player player) {
         UUID uuid = player.getPlayer().getUniqueId();
-
-        if (!notifications.remove(uuid))
+        if (!notifications.remove(uuid)) {
             notifications.add(uuid);
     }
+        else notifications.remove(uuid);
+    }
 
-    public void handleAlert(Check check) {
+    public void handleAlert(Check check, String format) {
         executorService.submit(() -> {
             check.setViolations(check.getViolations() + 1);
 

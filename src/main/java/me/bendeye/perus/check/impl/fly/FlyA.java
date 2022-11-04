@@ -2,6 +2,7 @@ package me.bendeye.perus.check.impl.fly;
 
 import me.bendeye.perus.check.Check;
 import me.bendeye.perus.data.PlayerData;
+import org.bukkit.entity.Player;
 
 /**
  * @author Lindgey
@@ -10,7 +11,12 @@ import me.bendeye.perus.data.PlayerData;
 public class FlyA extends Check {
 
     public FlyA(PlayerData data) {
-        super(data);
+        super(data, "FlyA");
+    }
+
+    @Override
+    public void handle(Player player) {
+
     }
 
 }

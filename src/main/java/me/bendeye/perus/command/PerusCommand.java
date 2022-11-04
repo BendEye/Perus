@@ -17,20 +17,17 @@ public class PerusCommand implements CommandExecutor {
             if (args.length == 0) {
                 sender.sendMessage(Perus.getInstance().getConfigManager().getHelpmessage());
             } else {
-                if (args.length == 1 && equals("alerts") && sender.hasPermission("perus.alerts")) {
-                    alertManager.toggleAlerts(((Player) sender).getPlayer());
-                    sender.sendMessage(Perus.getInstance().getConfigManager().getToggledonalerts());
-                } else {
-                    sender.hasPermission("perus.alerts");
-                    alertManager.toggleAlerts(((Player) sender).getPlayer());
-                    sender.sendMessage(Perus.getInstance().getConfigManager().getUntoggledonalerts());
+                if (args.length == 1) {
+                    if (args[0].equalsIgnoreCase("alerts")) {
+                        if (sender.hasPermission("perus.alerts") || sender.isOp()) {
+                            alertManager.toggleAlerts((Player) sender);
+                            sender.sendMessage("Notifications have been toggled on");
+                        }
+                    }
                 }
-
             }
-
         }
-
-        return false;
+            return false;
     }
-
 }
+

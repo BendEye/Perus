@@ -8,15 +8,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class ConfigManager {
 
     private final String helpmessage;
-    private final String toggledonalerts;
 
-    private final String untoggledonalerts;
+
+    private final String notifications;
 
     public ConfigManager(FileConfiguration fileConfiguration) {
 
         this.helpmessage = ColorUtil.format(fileConfiguration.getString("perus.messages.help"));
-        this.toggledonalerts = ColorUtil.format(fileConfiguration.getString("perus.messages.alerts.toggled"));
-        this.untoggledonalerts = ColorUtil.format(fileConfiguration.getString("perus.messages.alerts.untoggled"));
+        this.notifications = ColorUtil.format(fileConfiguration.getString("perus.messages.notifications"));
     }
 
 }

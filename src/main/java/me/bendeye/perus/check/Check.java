@@ -22,14 +22,31 @@ public abstract class Check {
     protected final PlayerData data;
 
     protected int violations;
+    private final String name;
 
-    public Check(PlayerData data) {
+    // This can be used to check how many times someone set off an alert in an x amount of time
+    private final Set<Long> alertTimes = new HashSet<>();
+
+    public Check(PlayerData data, String name) {
         this.data = data;
+        this.name = name;
     }
 
    public void flag() {
-       alertManager.handleAlert(this);
+       alertTimes.add(System.currentTimeMillis());
+       alertManager.handleAlert(this, String.format(Perus.getInstance().getConfigManager().getNotifications(), data.getPlayer().getName(), name, getViolations()));
     }
 
+    public void flag(Player player, String stats) {
+        alertTimes.add(System.currentTimeMillis());
 
+        alertManager.handleAlert(this, String.format(Perus.getInstance().getConfigManager().getNotifications(), data.getPlayer().getName(), name, getViolations(), stats));
+    }
+
+    protected void decreaseVl(int decrement) {
+        violations = Math.max(0, violations - decrement);
+    }
+
+    public abstract void handle(Player player);
 }
+

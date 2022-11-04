@@ -1,6 +1,4 @@
 perus:
   messages:
-    alerts:
-      toggled: "You've turned on alerts!"
-      untoggled: "You've turned off alerts!"
+    notifications: "Perus | %player% has violated %check% (x%vl%) %stats%"
     help: "Commands: alerts"

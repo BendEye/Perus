@@ -2,6 +2,7 @@ package me.bendeye.perus.manager;
 
 import me.bendeye.perus.check.Check;
 import me.bendeye.perus.check.impl.fly.FlyA;
+import me.bendeye.perus.check.impl.speed.SpeedA;
 import me.bendeye.perus.data.PlayerData;
 
 import java.lang.reflect.InvocationTargetException;
@@ -19,7 +20,8 @@ public class CheckManager {
 
     public CheckManager() {
         this.checks = Arrays.asList(
-                FlyA.class
+                FlyA.class,
+                SpeedA.class
         );
     }
 
