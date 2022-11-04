@@ -31,14 +31,15 @@ public final class PlayerData {
     private final List<Check> checks;
     private final List<Tracker> trackers;
 
-    private final MovementTracker movementTracker = new MovementTracker(this);
+    private final MovementTracker movementTracker;
 
 
     public PlayerData(final Player player) {
+        this.trackers = new ArrayList<>();
         this.player = player;
         this.uuid = player.getUniqueId();
         this.checks = Perus.getInstance().getCheckManager().getChecks(this);
-        this.trackers = new ArrayList<>();
+        this.movementTracker = new MovementTracker(this);
     }
 
     public void handle(Packet packet) {

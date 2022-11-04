@@ -6,16 +6,14 @@ import me.bendeye.perus.util.ColorUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Getter
 public class AlertManager {
 
-    private final Set<UUID> exemptedFromAlerts = new HashSet<>();
+    private final List<UUID> exemptedFromAlerts = new ArrayList<>();
     private final ExecutorService executorService = Executors.newFixedThreadPool(4);
 
     public void toggleAlerts(Player player) {
@@ -23,7 +21,7 @@ public class AlertManager {
         if(!exemptedFromAlerts.contains(uuid)) {
             exemptedFromAlerts.add(uuid);
             player.sendMessage(ColorUtil.format("&cYou disabled alerts."));
-        } else {
+        } else if(exemptedFromAlerts.contains(uuid)){
             exemptedFromAlerts.remove(uuid);
             player.sendMessage(ColorUtil.format("&aYou enabled alerts."));
         }

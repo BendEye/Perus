@@ -11,7 +11,7 @@ public class PerusCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        AlertManager alertManager = new AlertManager();
+
 
         if (sender instanceof Player) {
             if (args.length == 0) {
@@ -20,7 +20,7 @@ public class PerusCommand implements CommandExecutor {
                 if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("alerts")) {
                         if (sender.hasPermission("perus.alerts") || sender.isOp()) {
-                            alertManager.toggleAlerts((Player) sender);
+                            Perus.getInstance().getAlertManager().toggleAlerts((Player) sender);
                         }
                     }
                 }
