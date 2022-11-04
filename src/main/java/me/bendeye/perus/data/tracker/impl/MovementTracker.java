@@ -4,6 +4,7 @@ import lombok.Getter;
 import me.bendeye.perus.data.PlayerData;
 import me.bendeye.perus.data.tracker.api.Tracker;
 import me.bendeye.perus.packet.Packet;
+import me.bendeye.perus.util.CustomLocation;
 
 /**
  * @author Lindgey
@@ -12,6 +13,7 @@ import me.bendeye.perus.packet.Packet;
 
  @Getter
 public class MovementTracker extends Tracker {
+
 
     private double x, y, z;
     private double lastX, lastY, lastZ;

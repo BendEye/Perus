@@ -2,7 +2,6 @@ package me.bendeye.perus.packet;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketContainer;
-import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.List;

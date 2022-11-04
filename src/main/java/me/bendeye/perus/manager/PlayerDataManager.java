@@ -1,6 +1,5 @@
 package me.bendeye.perus.manager;
 
-import me.bendeye.perus.Perus;
 import me.bendeye.perus.data.PlayerData;
 import org.bukkit.entity.Player;
 
@@ -16,7 +15,7 @@ public class PlayerDataManager {
 
     private final List<PlayerData> playerDataList = new ArrayList<>();
 
-    public PlayerData  addOrDelete(Player player) {
+    public void addOrDelete(Player player) {
         if(playerDataList.stream().anyMatch(playerData -> playerData.getPlayer().getUniqueId() == player.getUniqueId())) {
             playerDataList.remove(getData(player));
 
@@ -24,10 +23,7 @@ public class PlayerDataManager {
             PlayerData playerData = new PlayerData(player);
             playerDataList.add(new PlayerData(player));
 
-            return playerData;
         }
-
-        return null;
 
     }
 

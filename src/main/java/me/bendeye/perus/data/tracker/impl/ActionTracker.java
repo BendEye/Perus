@@ -1,0 +1,22 @@
+package me.bendeye.perus.data.tracker.impl;
+
+import me.bendeye.perus.data.PlayerData;
+import me.bendeye.perus.data.tracker.api.Tracker;
+import me.bendeye.perus.packet.Packet;
+
+public class ActionTracker extends Tracker {
+
+    public ActionTracker(PlayerData data) {
+        super(data);
+    }
+
+    @Override
+    public void handlePreCheck(Packet packet) {
+
+    }
+
+    @Override
+    public void handlePostCheck(Packet packet) {
+
+    }
+}
