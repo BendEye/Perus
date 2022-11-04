@@ -28,7 +28,7 @@ public abstract class Check {
     }
 
    public void flag() {
-
+       alertManager.handleAlert(this);
     }
 
 

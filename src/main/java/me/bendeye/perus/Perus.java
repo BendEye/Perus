@@ -20,6 +20,9 @@ public class Perus extends JavaPlugin {
     private final CheckManager checkManager = new CheckManager();
 
     @Getter
+    private final CommandManager commandManager = new CommandManager();
+
+    @Getter
     private final AlertManager alertManager = new AlertManager();
 
     @Getter
