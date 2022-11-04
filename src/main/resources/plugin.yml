@@ -1,0 +1,8 @@
+name: Perus
+version: '${project.version}'
+main: me.bendeye.perus.Perus
+api-version: 1.19
+load: STARTUP
+depend: [ ProtocolLib ]
+authors: [ BendEye ]
+description: Open-source AntiCheat on Github.com/BendEye/Perus
