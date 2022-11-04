@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Salers
+ * @author Lindgey
  * made on me.bendeye.perus.manager
  */
 public class CheckManager {

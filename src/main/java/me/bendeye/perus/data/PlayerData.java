@@ -16,7 +16,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public final class PlayerData {
-    
+
     private final Player player;
     private final UUID uuid;
     private final List<Check> checks;
