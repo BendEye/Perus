@@ -30,11 +30,13 @@ public class RotationTracker extends Tracker {
                 yaw = packet.getFloat().read(0);
                 pitch = packet.getFloat().read(1);
 
-                deltaYaw = (yaw - lastYaw) % 360F;
+                deltaYaw = Math.abs(yaw - lastYaw) % 360F;
                 deltaPitch = pitch - lastPitch;
 
                 yawAccel = Math.abs(deltaYaw - lastDeltaYaw);
                 pitchAccel = Math.abs(deltaPitch - lastDeltaPitch);
+            } else {
+                deltaYaw = deltaPitch = 0;
             }
 
 

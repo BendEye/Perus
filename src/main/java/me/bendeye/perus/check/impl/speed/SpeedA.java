@@ -6,6 +6,9 @@ import me.bendeye.perus.data.PlayerData;
 import me.bendeye.perus.data.tracker.impl.MovementTracker;
 import me.bendeye.perus.data.tracker.impl.RotationTracker;
 import me.bendeye.perus.packet.Packet;
+import org.bukkit.Bukkit;
+
+import javax.swing.plaf.basic.BasicButtonUI;
 
 @Testing
 public class SpeedA extends Check {
@@ -16,10 +19,12 @@ public class SpeedA extends Check {
 
     @Override
     public void handle(Packet packet) {
-        if (!packet.isRotation()) {
+        if (packet.isFlying()) {
+            
             final MovementTracker movementTracker = getData().getMovementTracker();
             final RotationTracker rotationData = getData().getRotationTracker();
-            final float deltaYaw = rotationData.getYaw();
+
+            final float deltaYaw = rotationData.getDeltaYaw();
 
             final double deltaXZ = movementTracker.getHorizontalDist();
             final double lastDeltaXZ = movementTracker.getLastHorizontalDist();
@@ -29,7 +34,6 @@ public class SpeedA extends Check {
             final double squareAccel = accel * 100;
 
             if (deltaYaw > 1.5F && deltaXZ > .15D && squareAccel < 1.0E-5) {
-
                 flag("DY: " + deltaYaw + " accel: " + squareAccel);
 
 
