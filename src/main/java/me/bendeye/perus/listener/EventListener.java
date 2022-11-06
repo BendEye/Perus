@@ -14,13 +14,13 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onLogin(PlayerJoinEvent event) {
-        Perus.getInstance().getDataManager().addOrDelete(event.getPlayer());
+        Perus.getInstance().getDataManager().addPlayer(event.getPlayer());
 
     }
 
     @EventHandler
     public void onLogout(PlayerQuitEvent event) {
-        Perus.getInstance().getDataManager().addOrDelete(event.getPlayer());
+        Perus.getInstance().getDataManager().removePlayer(event.getPlayer());
     }
     
 }
