@@ -14,7 +14,7 @@ import me.bendeye.perus.util.CustomLocation;
  @Getter
 public class MovementTracker extends Tracker {
 
-
+    private float yaw;
     private double x, y, z;
     private double lastX, lastY, lastZ;
 
@@ -34,6 +34,7 @@ public class MovementTracker extends Tracker {
                 y = packet.getDoubles().read(1);
                 z = packet.getDoubles().read(2);
             }
+
         }
 
     }

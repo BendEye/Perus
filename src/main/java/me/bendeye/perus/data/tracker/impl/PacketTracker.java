@@ -6,12 +6,25 @@ import me.bendeye.perus.packet.Packet;
 
 public class PacketTracker extends Tracker {
 
+    private float yaw, pitch, yawAccel, pitchAccel;
+    private float lastYaw, lastPitch, lastyawAccel, lastpitchAccel;
+
     public PacketTracker(PlayerData data) {
         super(data);
     }
 
     @Override
     public void handlePreCheck(Packet packet) {
+        if(packet.isRotation()) {
+            final float deltaYaw = Math.abs(yaw - lastYaw);
+            final float deltaPitch = Math.abs(pitch - lastPitch);
+            final float deltayawAccel = Math.abs(yawAccel - lastpitchAccel);
+            final float deltapitchAccel = Math.abs(pitchAccel - lastpitchAccel);
+            this.lastYaw = yaw;
+            this.lastPitch = pitch;
+
+        }
+
 
     }
 

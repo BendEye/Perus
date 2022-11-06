@@ -30,7 +30,7 @@ public abstract class Check {
         this.name = name;
     }
 
-    public void flag() {
+    public void flag(String stats) {
         alertTimes.add(System.currentTimeMillis());
         alertManager.handleAlert(this, Perus.getInstance().getConfigManager().getNotifications()
                 .replace("%player%", data.getPlayer().getDisplayName())

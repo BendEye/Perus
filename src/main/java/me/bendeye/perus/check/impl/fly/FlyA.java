@@ -17,6 +17,9 @@ public class FlyA extends Check {
 
     @Override
     public void handle(Packet packet) {
+        if(packet.isRelEntityMove()) {
+
+        }
 
     }
 
