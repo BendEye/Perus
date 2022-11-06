@@ -30,9 +30,11 @@ public class MovementTracker extends Tracker {
             lastY = y;
             lastZ = z;
 
+
             lastDistX = distX;
             lastDistY = distY;
             lastDistZ = distZ;
+
             lastHorizontalDist = horizontalDist;
 
             if(packet.isPosition()) {
@@ -40,9 +42,6 @@ public class MovementTracker extends Tracker {
                 y = packet.getDoubles().read(1);
                 z = packet.getDoubles().read(2);
 
-                distX = x- lastX;
-                distY = y - lastY;
-                distZ = z  - lastZ;
 
                 horizontalDist = Math.hypot(distX, distZ);
             } else {
