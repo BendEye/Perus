@@ -5,7 +5,7 @@ import lombok.Setter;
 import me.bendeye.perus.Perus;
 import me.bendeye.perus.check.Check;
 import me.bendeye.perus.data.tracker.api.Tracker;
-import me.bendeye.perus.data.tracker.impl.MovementTracker;
+import me.bendeye.perus.data.tracker.impl.*;
 import me.bendeye.perus.packet.Packet;
 import org.bukkit.entity.Player;
 
@@ -27,6 +27,10 @@ public final class PlayerData {
     private final List<Tracker> trackers;
 
     private final MovementTracker movementTracker;
+    private final RotationTracker rotationTracker;
+    private final ConnectionTracker connectionTracker;
+    private final ActionTracker actionTracker;
+    private final PacketTracker packetTracker;
 
 
     public PlayerData(final Player player) {
@@ -35,6 +39,10 @@ public final class PlayerData {
         this.uuid = player.getUniqueId();
         this.checks = Perus.getInstance().getCheckManager().getChecks(this);
         this.movementTracker = new MovementTracker(this);
+        this.rotationTracker = new RotationTracker(this);
+        this.connectionTracker = new ConnectionTracker(this);
+        this.actionTracker = new ActionTracker(this);
+        this.packetTracker = new PacketTracker(this);
     }
 
     public void handle(Packet packet) {

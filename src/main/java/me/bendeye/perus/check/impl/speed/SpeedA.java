@@ -4,6 +4,7 @@ import me.bendeye.perus.check.Check;
 import me.bendeye.perus.check.annotations.Testing;
 import me.bendeye.perus.data.PlayerData;
 import me.bendeye.perus.data.tracker.impl.MovementTracker;
+import me.bendeye.perus.data.tracker.impl.RotationTracker;
 import me.bendeye.perus.packet.Packet;
 
 @Testing
@@ -16,12 +17,12 @@ public class SpeedA extends Check {
     @Override
     public void handle(Packet packet) {
         if (!packet.isRotation()) {
+            MovementTracker movementData;
+            RotationTracker rotationData = getData().getRotationTracker();
+            final float deltaYaw = rotationData.getYaw();
 
-            MovementTracker data = getData().getMovementTracker();
-            final float deltaYaw = getData().getMovementTracker().getYaw();
-
-            final double deltaXZ = data.getX() + data.getZ();
-            final double lastDeltaXZ = data.getLastX() + data.getLastZ();
+            final double deltaXZ = 0;
+            final double lastDeltaXZ = 0;
 
             final double accel = Math.abs(deltaXZ - lastDeltaXZ);
 
