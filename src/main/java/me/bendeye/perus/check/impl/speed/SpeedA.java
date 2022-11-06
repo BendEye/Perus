@@ -17,12 +17,12 @@ public class SpeedA extends Check {
     @Override
     public void handle(Packet packet) {
         if (!packet.isRotation()) {
-            MovementTracker movementData;
-            RotationTracker rotationData = getData().getRotationTracker();
+            final MovementTracker movementTracker = getData().getMovementTracker();
+            final RotationTracker rotationData = getData().getRotationTracker();
             final float deltaYaw = rotationData.getYaw();
 
-            final double deltaXZ = 0;
-            final double lastDeltaXZ = 0;
+            final double deltaXZ = movementTracker.getHorizontalDist();
+            final double lastDeltaXZ = movementTracker.getLastHorizontalDist();
 
             final double accel = Math.abs(deltaXZ - lastDeltaXZ);
 
