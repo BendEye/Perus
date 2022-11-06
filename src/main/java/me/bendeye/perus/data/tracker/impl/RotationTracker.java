@@ -7,21 +7,38 @@ import me.bendeye.perus.packet.Packet;
 
 @Getter
 public class RotationTracker extends Tracker {
-    private float yaw, pitch, yawAccel, pitchAccel;
-    private float lastYaw, lastPitch, lastyawAccel, lastpitchAccel;
+
+    private float yaw, pitch, yawAccel, pitchAccel, deltaYaw, lastDeltaYaw;
+    private float lastYaw, lastPitch, lastYawAccel, lastPitchAccel, deltaPitch , lastDeltaPitch;
 
     public RotationTracker(PlayerData data) {
         super(data);
     }
     @Override
     public void handlePreCheck(Packet packet) {
-        if (packet.isRotation()) {
-            final float deltaYaw = Math.abs(yaw - lastYaw);
-            final float deltaPitch = Math.abs(pitch - lastPitch);
-            final float deltayawAccel = Math.abs(yawAccel - lastpitchAccel);
-            final float deltapitchAccel = Math.abs(pitchAccel - lastpitchAccel);
-            this.lastYaw = yaw;
-            this.lastPitch = pitch;
+        if (packet.isFlying()) {
+            lastYaw = yaw;
+            lastPitch = pitch;
+
+            lastDeltaYaw = deltaYaw;
+            lastDeltaPitch = deltaPitch;
+
+            lastYawAccel = yawAccel;
+            lastPitchAccel = pitchAccel;
+
+            if(packet.isRotation()) {
+                yaw = packet.getFloat().read(0);
+                pitch = packet.getFloat().read(1);
+
+                deltaYaw = (yaw - lastYaw) % 360F;
+                deltaPitch = pitch - lastPitch;
+
+                yawAccel = Math.abs(deltaYaw - lastDeltaYaw);
+                pitchAccel = Math.abs(deltaPitch - lastDeltaPitch);
+            }
+
+
+
 
 
         }
