@@ -1,9 +1,11 @@
 package me.bendeye.perus.data.tracker.impl;
 
+import lombok.Getter;
 import me.bendeye.perus.data.PlayerData;
 import me.bendeye.perus.data.tracker.api.Tracker;
 import me.bendeye.perus.packet.Packet;
 
+@Getter
 public class RotationTracker extends Tracker {
     private float yaw, pitch, yawAccel, pitchAccel;
     private float lastYaw, lastPitch, lastyawAccel, lastpitchAccel;
