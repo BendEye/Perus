@@ -7,9 +7,9 @@ An open-source AntiCheat that will eventually contain the following.
     - Player/target violates a check we send a message and violation 
     - Log violation into the log system and doesn't reset on disconnect
   - Check System
-    - Add Checks 
+    - Add Checks if enabled in Config.yml
     - Remove Checks if disabled in Config.yml
-    - Set default violations per check
+    - Set default max violations per check
   - PacketListener via ProtocolLib
     - Join/Leave(Sending, Receiving)
   - Data System
