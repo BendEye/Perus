@@ -4,8 +4,12 @@ An open-source AntiCheat that will eventually contain the following.
 
 - Base of AntiCheat  
   - Alert System
+    - Player/target violates a check we send a message and violation 
     - Log violation into the log system and doesn't reset on disconnect
   - Check System
+    - Add Checks 
+    - Remove Checks if disabled in Config.yml
+    - Set default violations per check
   - PacketListener via ProtocolLib
     - Join/Leave(Sending, Receiving)
   - Data System
@@ -25,7 +29,6 @@ An open-source AntiCheat that will eventually contain the following.
     - Set main command
   - Punishment System
     - Send out a command after reaching the max violation set in checks.yml
-    - 
   - Log System
     - Flat file
     - MongoDB
