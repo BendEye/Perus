@@ -1,10 +1,14 @@
 package me.bendeye.perus;
 
+import com.comphenix.protocol.ProtocolLibrary;
 import lombok.Getter;
 
+import me.bendeye.perus.command.PerusCommand;
 import me.bendeye.perus.listener.EventListener;
+import me.bendeye.perus.listener.PacketListener;
 import me.bendeye.perus.manager.AlertManager;
 import me.bendeye.perus.manager.CheckManager;
+import me.bendeye.perus.manager.ConfigManager;
 import me.bendeye.perus.manager.PlayerDataManager;
 
 import org.bukkit.Bukkit;
@@ -18,7 +22,8 @@ public class Perus extends JavaPlugin {
 
     @Getter
     private final CheckManager checkManager = new CheckManager();
-
+    @Getter
+    private ConfigManager configManager;
     @Getter
     private final AlertManager alertManager = new AlertManager();
 
@@ -28,6 +33,10 @@ public class Perus extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         instance = this;
+        ProtocolLibrary.getProtocolManager().addPacketListener(new PacketListener());
+        saveDefaultConfig();
+        configManager = new ConfigManager(getConfig());
+        getCommand("perus").setExecutor(new PerusCommand());
 
         Bukkit.getPluginManager().registerEvents(new EventListener(), this);
     }

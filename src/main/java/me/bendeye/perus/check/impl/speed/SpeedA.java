@@ -15,9 +15,11 @@ public class SpeedA extends Check {
 
     @Override
     public void handle(Packet packet) {
-        if (packet.isArmAnimation()) {
-            flag("");
+        if (packet.isBlockDig()) {
+            flag("Dig packet test");
         }
     }
-
 }
+
+
+

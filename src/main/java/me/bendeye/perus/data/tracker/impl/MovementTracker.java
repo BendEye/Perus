@@ -13,7 +13,7 @@ import me.bendeye.perus.util.CustomLocation;
 
  @Getter
 public class MovementTracker extends Tracker {
-
+    private CustomLocation location, lastLocation;
     private double x, y, z;
     private double lastX, lastY, lastZ;
     private double distX, distY, distZ, horizontalDist;
@@ -21,6 +21,8 @@ public class MovementTracker extends Tracker {
 
     public MovementTracker(PlayerData data) {
         super(data);
+        getData().getPlayer().getLocation();
+        this.location = this.lastLocation = new CustomLocation(getData().getPlayer().getLocation());
     }
 
     @Override

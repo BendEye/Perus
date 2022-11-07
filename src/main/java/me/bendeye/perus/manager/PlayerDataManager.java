@@ -14,36 +14,23 @@ public class PlayerDataManager {
 
     private final Map<UUID, PlayerData> playerDataMap = new HashMap<>();
 
-    //private final List<PlayerData> playerDataList = new ArrayList<>();
-
-
-
 
     public void addPlayer(Player player) {
-        if (player instanceof TemporaryPlayer || player == null) {
-            System.out.println("Player has disconnected or was kicked before fully joining!");
-        } else playerDataMap.put(player.getUniqueId(), new PlayerData(player));
-
+        playerDataMap.put(player.getUniqueId(), new PlayerData(player));
     }
 
     public void removePlayer(Player player) {
-        if (player instanceof TemporaryPlayer || player == null) {
-            System.out.println("Player has disconnected or was kicked before fully joining!");
-        } else playerDataMap.remove(player.getUniqueId());
+        playerDataMap.remove(player.getUniqueId());
     }
 
 
     public PlayerData getData(Player player) {
 
         Optional<PlayerData> dataOptional = Optional.ofNullable(playerDataMap.get((player.getUniqueId())));
-        if (player instanceof TemporaryPlayer) {
-            System.out.println("Player has disconnected or was kicked before fully joining!");
-            return null;
-        } else if(dataOptional.isPresent())
+        if(dataOptional.isPresent())
             return dataOptional.get();
         else addPlayer(player);
-
-            return getData(player);
+        return getData(player);
 
     }
 }
