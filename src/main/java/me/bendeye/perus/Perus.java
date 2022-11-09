@@ -6,15 +6,12 @@ import lombok.Getter;
 import me.bendeye.perus.command.PerusCommand;
 import me.bendeye.perus.listener.EventListener;
 import me.bendeye.perus.listener.PacketListener;
-import me.bendeye.perus.manager.AlertManager;
-import me.bendeye.perus.manager.CheckManager;
-import me.bendeye.perus.manager.ConfigManager;
-import me.bendeye.perus.manager.PlayerDataManager;
+import me.bendeye.perus.manager.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
+@Getter
 public class Perus extends JavaPlugin {
 
     @Getter
@@ -29,6 +26,8 @@ public class Perus extends JavaPlugin {
 
     @Getter
     private final PlayerDataManager dataManager = new PlayerDataManager();
+    @Getter
+    private final PunishmentManager punishmentManager = new PunishmentManager();
     @Override
     public void onEnable() {
         // Plugin startup logic

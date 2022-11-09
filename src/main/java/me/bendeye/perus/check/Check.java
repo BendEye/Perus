@@ -5,6 +5,7 @@ import lombok.Setter;
 import me.bendeye.perus.Perus;
 import me.bendeye.perus.data.PlayerData;
 import me.bendeye.perus.manager.AlertManager;
+import me.bendeye.perus.manager.PunishmentManager;
 import me.bendeye.perus.packet.Packet;
 import org.atteo.classindex.IndexSubclasses;
 import org.bukkit.entity.Player;
@@ -20,12 +21,14 @@ public abstract class Check {
     protected final PlayerData data;
 
     protected int violations;
+    protected int maxviolations;
     private final String name;
 
     // This can be used to check how many times someone set off an alert in an x amount of time
     private final Set<Long> alertTimes = new HashSet<>();
 
-    public Check(PlayerData data, String name) {
+    public Check(PlayerData data, String name, int maxviolations) {
+        this.maxviolations = maxviolations;
         this.data = data;
         this.name = name;
     }
@@ -38,7 +41,11 @@ public abstract class Check {
                 .replace("%vl%", String.valueOf(violations))
                 .replace("%stats%", stats)
         );
+    if (maxviolations >= getMaxviolations()) {
+        Perus.getInstance().getPunishmentManager().handlePunishment(this);
+        } {
 
+        }
 
     }
 

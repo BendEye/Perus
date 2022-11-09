@@ -10,7 +10,7 @@ import me.bendeye.perus.packet.Packet;
 public class SpeedA extends Check {
 
     public SpeedA(PlayerData data) {
-        super(data, "Speed (A)");
+        super(data, "Speed (A)",10);
     }
 
     @Override

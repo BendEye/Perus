@@ -11,7 +11,7 @@ import me.bendeye.perus.packet.Packet;
 public class FlyA extends Check {
 
     public FlyA(PlayerData data) {
-        super(data, "Fly (A)");
+        super(data, "Fly (A)", 10);
     }
 
     @Override

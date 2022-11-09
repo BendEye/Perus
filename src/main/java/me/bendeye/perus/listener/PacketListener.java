@@ -6,6 +6,8 @@ import com.comphenix.protocol.injector.server.TemporaryPlayer;
 import me.bendeye.perus.Perus;
 import me.bendeye.perus.data.PlayerData;
 import me.bendeye.perus.packet.Packet;
+import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 /**
  * @author Lindgey
@@ -20,28 +22,21 @@ public class PacketListener extends PacketAdapter {
 
     @Override
     public void onPacketReceiving(PacketEvent event) {
-        if (event.isCancelled()) {
+        if (event.isPlayerTemporary()) {
             return;
         }
 
-        if (event.getPlayer() instanceof TemporaryPlayer || event.getPlayer() == null) {
-            return;
-        }
-        new TemporaryPlayer();
-        final PlayerData data = Perus.getInstance().getDataManager().getData(event.getPlayer());
+        PlayerData data = Perus.getInstance().getDataManager().getData((event.getPlayer()).getPlayer());
         data.handle(new Packet(event.getPacket()));
     }
 
 
     @Override
     public void onPacketSending(PacketEvent event) {
-        if (event.isCancelled()) {
+        if (event.isPlayerTemporary()) {
             return;
         }
-        if (event.getPlayer() instanceof TemporaryPlayer || event.getPlayer() == null) {
-            return;
-        }
-        new TemporaryPlayer();
+
         final PlayerData data = Perus.getInstance().getDataManager().getData(event.getPlayer());
             data.handle(new Packet(event.getPacket()));
     }
